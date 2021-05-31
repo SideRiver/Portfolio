@@ -1,0 +1,255 @@
+<template>
+  <img src="../assets/header.png" alt="" class="slide0" />
+  <img src="../assets/header1.png" alt="" class="slide1" />
+  <img src="../assets/header2.png" alt="" class="slide2" />
+  <img src="../assets/header3.png" alt="" class="slide3" />
+  <div class="header" :class="{ isfixtop: isfix }">
+    <nav class="menubar">
+      <img src="../assets/logo.png" alt="" id="logo" />
+      <a href="index.html">
+        HOME
+        <!-- <span>ホーム</span> -->
+      </a>
+      <a href="about.html">
+        ABOUT
+        <!-- <span>SideRiverについて</span> -->
+      </a>
+      <a href="javascript:void(0)">
+        WORKS
+        <!-- <span>作品・実績</span> -->
+      </a>
+      <a href="recruit.html">
+        BOOKS
+        <!-- <span>読んだ本のまとめ</span> -->
+      </a>
+      <a href="contact.html">
+        CONTACT
+        <!-- <span>お問い合わせ</span> -->
+      </a>
+    </nav>
+  </div>
+  <div class="spacer2">
+    <Home />
+  </div>
+</template>
+<script>
+import Home from './Home.vue'
+
+export default {
+  name: 'Header',
+  components: {
+    Home,
+  },
+  data() {
+    return {
+      isfix: false,
+      lastUpdated: Date.now(),
+      home: true,
+      about: false,
+      works: false,
+      books: false,
+      contact: false,
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', () => {
+      console.log('scroll', window.pageYOffset)
+    })
+  },
+  unmounted() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
+  methods: {
+    handleScroll() {
+      // 現在時刻から100秒以内にisfixがfalseからtrueに切り替わっていた場合(=チカチカしていた場合)無視する
+      if (Date.now() - this.lastUpdated < 100) return
+      const cr = document.querySelector('.header').getBoundingClientRect()
+      console.log(cr.top)
+      this.isfix = cr.top <= 0
+    },
+  },
+  // watchはdataを監視して、変更があったときに対応する関数が呼ばれる
+  watch: {
+    // 第一引数は新しい値、第2引数は古い値
+    isfix(val) {
+      if (val) {
+        // isfixがfalseからtrueになったときに、lastUpdateに現在時刻を入れる
+        this.lastUpdated = Date.now()
+      }
+    },
+  },
+}
+</script>
+<style scoped>
+/*リンク（全般）設定---------------------------------------------------------------------------*/
+a {
+  color: #999; /*リンクテキストの色*/
+  transition: 0.2s; /*マウスオン時の移り変わるまでの時間設定。0.2秒。*/
+}
+a:hover {
+  color: #70b0eb; /*マウスオン時の文字色*/
+  text-decoration: none; /*マウスオン時に下線を消す設定。残したいならこの１行削除。*/
+}
+.header {
+  background: black;
+  width: 100%;
+  height: 105px;
+  position: sticky;
+  z-index: 1000;
+  transition: all 0.5s;
+}
+.isfixtop {
+  top: 0;
+  height: 64px;
+}
+.spacer2 {
+  width: 100%;
+  height: 3000px;
+  background: white;
+}
+</style>
+<style scoped>
+/*ロゴ画像*/
+.header #logo {
+  width: 200px; /*画像幅*/
+  height: auto;
+  display: none;
+}
+.menubar a {
+  text-decoration: none;
+  display: block;
+  height: 105px; /*メニューブロックの高さ。ここの「85」と、下の行の「20」を合計した「105」の数字と、上の「#menubar」の「height」および下のfixmenu設定に２箇所ある「margin-top」の数字を合わせて下さい。*/
+  float: left; /*左に回り込み*/
+  width: 20%; /*幅。今回は５個なので、100÷5=20。*/
+  font-size: 20px; /*文字サイズ*/
+  line-height: 105px;
+}
+.isfixtop .menubar a {
+  height: 64px;
+  font-size: 15px; /*文字サイズ*/
+  line-height: 64px;
+}
+/*飾り文字*/
+/* .menubar span {
+  display: block;
+  font-size: 10px;
+  color: #999;
+  letter-spacing: 0.2em;
+} */
+/*スマホ用メニューを表示させない*/
+#menubar-s,
+#menubar-s2 {
+  display: none;
+}
+/*３本バーアイコンを表示させない*/
+#menubar_hdr {
+  display: none;
+}
+</style>
+<style scoped>
+/*CSSスライドショー設定
+---------------------------------------------------------------------------*/
+img {
+  border: none;
+  max-width: 100%;
+  height: 400px;
+  vertical-align: middle;
+}
+/*１枚目*/
+@keyframes slide1 {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/*２枚目*/
+@keyframes slide2 {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/*３枚目*/
+@keyframes slide3 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*mainimg
+---------------------------------------------------------------------------*/
+#mainimg {
+  clear: left;
+  width: 100%;
+  position: relative;
+}
+.slide1,
+.slide2,
+.slide3 {
+  animation-duration: 15s; /*アニメーションを実行する時間*/
+  animation-iteration-count: infinite;
+  position: absolute;
+  left: 0px;
+  /* top: 0px; */
+  width: 100%;
+  height: auto;
+  animation-fill-mode: both; /*アニメーションの待機中は最初のキーフレームを維持、終了後は最後のキーフレームを維持。*/
+  animation-delay: 2s; /*出現するタイミング（秒後）*/
+}
+.slide0 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  /* z-index: -1; */
+}
+.slide1 {
+  animation-name: slide1;
+}
+.slide2 {
+  animation-name: slide2;
+}
+.slide3 {
+  animation-name: slide3;
+}
+</style>
