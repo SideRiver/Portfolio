@@ -10,7 +10,7 @@
         HOME
         <!-- <span>ホーム</span> -->
       </a>
-      <a href="about.html">
+      <a>
         ABOUT
         <!-- <span>SideRiverについて</span> -->
       </a>
@@ -28,27 +28,14 @@
       </a>
     </nav>
   </div>
-  <div class="spacer2">
-    <Home />
-  </div>
 </template>
 <script>
-import Home from './Home.vue'
-
 export default {
   name: 'Header',
-  components: {
-    Home,
-  },
   data() {
     return {
       isfix: false,
       lastUpdated: Date.now(),
-      home: true,
-      about: false,
-      works: false,
-      books: false,
-      contact: false,
     }
   },
   mounted() {
@@ -81,6 +68,7 @@ export default {
   },
 }
 </script>
+
 <style scoped>
 /*リンク（全般）設定---------------------------------------------------------------------------*/
 a {
@@ -92,7 +80,7 @@ a:hover {
   text-decoration: none; /*マウスオン時に下線を消す設定。残したいならこの１行削除。*/
 }
 .header {
-  background: black;
+  background: rgb(0, 0, 0, 0.99);
   width: 100%;
   height: 105px;
   position: sticky;
@@ -108,8 +96,7 @@ a:hover {
   height: 3000px;
   background: white;
 }
-</style>
-<style scoped>
+
 /*ロゴ画像*/
 .header #logo {
   width: 200px; /*画像幅*/

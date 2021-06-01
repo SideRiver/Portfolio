@@ -1,16 +1,40 @@
 <template>
-  <Header />
+  <MyHeader v-show="header" />
+  <Home v-show="home" />
+  <About v-show="about" />
+  <Works v-show="works" />
+  <Books v-show="books" />
+  <Contact v-show="contact" />
 </template>
 
 <script>
 // import Header2 from '@/components/Header2.vue'
-import Header from '@/components/Header.vue'
+import MyHeader from '@/components/Header.vue'
+import Home from '@/components/Home.vue'
+import About from '@/components/About.vue'
+import Works from '@/components/Works.vue'
+import Books from '@/components/Books.vue'
+import Contact from '@/components/Contact.vue'
 
 export default {
   name: 'App',
   components: {
-    // Header,
-    Header,
+    MyHeader,
+    Home,
+    About,
+    Works,
+    Books,
+    Contact,
+  },
+  data() {
+    return {
+      header: true,
+      home: true,
+      about: false,
+      works: false,
+      books: false,
+      contact: false,
+    }
   },
 }
 </script>
@@ -186,6 +210,9 @@ form {
   padding: 0px;
   font-size: 100%;
   font-weight: normal;
+}
+html {
+  background-color: white;
 }
 ul {
   list-style-type: none;
