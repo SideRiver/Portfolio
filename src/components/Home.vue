@@ -29,8 +29,9 @@
         href="https://www.wantedly.com/id/takuya_yokokawa"
         target="_blank"
         rel="noopener noreferrer"
-        ><img src="../assets/wantedly_mark_white.png" alt=""
-      /></a>
+      >
+        <div><img src="../assets/wantedly_mark_white.png" alt="" /></div
+      ></a>
     </div>
     <div class="MoreBox">
       More→
@@ -80,9 +81,9 @@ export default {
   margin: auto;
   align-items: center;
   justify-content: center;
+  align-items: flex-start;
 }
 .icons a {
-  display: flex;
   margin: 20px;
   padding: 5px;
   text-decoration: none;
@@ -110,7 +111,7 @@ export default {
 .icons img {
   background-color: black;
   width: 30px;
-  height: auto;
+  height: 30px;
   /* margin-left: 3px; */
   z-index: 0;
   transition: all 0.3s;

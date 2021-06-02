@@ -6,23 +6,23 @@
   <div class="header" :class="{ isfixtop: isfix }">
     <nav class="menubar">
       <img src="../assets/logo.png" alt="" id="logo" />
-      <a href="index.html">
+      <a @click="homeclick" :class="{ selectcolor: home }">
         HOME
         <!-- <span>ホーム</span> -->
       </a>
-      <a>
+      <a @click="aboutclick" :class="{ selectcolor: about }">
         ABOUT
         <!-- <span>SideRiverについて</span> -->
       </a>
-      <a href="javascript:void(0)">
+      <a @click="worksclick" :class="{ selectcolor: works }">
         WORKS
         <!-- <span>作品・実績</span> -->
       </a>
-      <a href="recruit.html">
+      <a @click="booksclick" :class="{ selectcolor: books }">
         BOOKS
         <!-- <span>読んだ本のまとめ</span> -->
       </a>
-      <a href="contact.html">
+      <a @click="contactclick" :class="{ selectcolor: contact }">
         CONTACT
         <!-- <span>お問い合わせ</span> -->
       </a>
@@ -36,12 +36,19 @@ export default {
     return {
       isfix: false,
       lastUpdated: Date.now(),
+      header: true,
+      home: true,
+      about: false,
+      works: false,
+      books: false,
+      contact: false,
     }
   },
+  emits: ['check'],
   mounted() {
     window.addEventListener('scroll', this.handleScroll)
     window.addEventListener('scroll', () => {
-      console.log('scroll', window.pageYOffset)
+      // console.log('scroll', window.pageYOffset)
     })
   },
   unmounted() {
@@ -52,8 +59,51 @@ export default {
       // 現在時刻から100秒以内にisfixがfalseからtrueに切り替わっていた場合(=チカチカしていた場合)無視する
       if (Date.now() - this.lastUpdated < 100) return
       const cr = document.querySelector('.header').getBoundingClientRect()
-      console.log(cr.top)
+      // console.log(cr.top)
       this.isfix = cr.top <= 0
+    },
+    allfalse() {
+      this.home = false
+      this.about = false
+      this.works = false
+      this.books = false
+      this.contact = false
+    },
+    send() {
+      this.$emit(
+        'check',
+        this.home,
+        this.about,
+        this.works,
+        this.books,
+        this.contact
+      )
+      // console.log(this.home, this.about, this.works, this.books, this.contact)
+    },
+    homeclick() {
+      this.allfalse()
+      this.home = true
+      this.send()
+    },
+    aboutclick() {
+      this.allfalse()
+      this.about = true
+      this.send()
+    },
+    worksclick() {
+      this.allfalse()
+      this.works = true
+      this.send()
+    },
+    booksclick() {
+      this.allfalse()
+      this.books = true
+      this.send()
+    },
+    contactclick() {
+      this.allfalse()
+      this.contact = true
+      this.send()
     },
   },
   // watchはdataを監視して、変更があったときに対応する関数が呼ばれる
@@ -72,12 +122,16 @@ export default {
 <style scoped>
 /*リンク（全般）設定---------------------------------------------------------------------------*/
 a {
-  color: #999; /*リンクテキストの色*/
+  color: rgb(199, 199, 199); /*リンクテキストの色*/
   transition: 0.2s; /*マウスオン時の移り変わるまでの時間設定。0.2秒。*/
 }
 a:hover {
-  color: #70b0eb; /*マウスオン時の文字色*/
+  color: #42d7eb; /*マウスオン時の文字色*/
   text-decoration: none; /*マウスオン時に下線を消す設定。残したいならこの１行削除。*/
+  cursor: pointer;
+}
+.selectcolor {
+  color: #42d7eb;
 }
 .header {
   background: rgb(0, 0, 0, 0.99);

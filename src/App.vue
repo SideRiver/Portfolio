@@ -1,14 +1,19 @@
 <template>
-  <MyHeader v-show="header" />
-  <Home v-show="home" />
-  <About v-show="about" />
-  <Works v-show="works" />
-  <Books v-show="books" />
-  <Contact v-show="contact" />
+  <transition-group name="message" tag="div">
+    <TopPage v-if="toppage" @click="toppagecheck" />
+    <div v-else>
+      <MyHeader v-show="header" @check="checkheader" />
+      <Home v-if="home" />
+      <About v-if="about" />
+      <Works v-if="works" />
+      <Books v-if="books" />
+      <Contact v-if="contact" />
+    </div>
+  </transition-group>
 </template>
 
 <script>
-// import Header2 from '@/components/Header2.vue'
+import TopPage from '@/components/TopPage.vue'
 import MyHeader from '@/components/Header.vue'
 import Home from '@/components/Home.vue'
 import About from '@/components/About.vue'
@@ -19,6 +24,7 @@ import Contact from '@/components/Contact.vue'
 export default {
   name: 'App',
   components: {
+    TopPage,
     MyHeader,
     Home,
     About,
@@ -28,6 +34,7 @@ export default {
   },
   data() {
     return {
+      toppage: true,
       header: true,
       home: true,
       about: false,
@@ -36,18 +43,36 @@ export default {
       contact: false,
     }
   },
+  methods: {
+    checkheader(...args) {
+      for (var i = 0; i < args.length; i++) {
+        if (i == 0) {
+          this.home = args[i]
+        }
+        if (i == 1) {
+          this.about = args[i]
+        }
+        if (i == 2) {
+          this.works = args[i]
+        }
+        if (i == 3) {
+          this.books = args[i]
+        }
+        if (i == 4) {
+          this.contact = args[i]
+        }
+      }
+    },
+    checktop(value) {
+      this.TopPage = value
+      console.log(this.TopPage)
+    },
+    toppagecheck() {
+      this.toppage = false
+    },
+  },
 }
 </script>
-
-<style lang="sass">
-#app
-  font-family: Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  text-align: center
-  color: #000000
-  background-color: #FFFFFF
-</style>
 
 <style>
 /* リセットcss */
@@ -176,7 +201,35 @@ table {
   border-spacing: 0;
 }
 </style>
+<style lang="sass">
+#app
+  font-family: Avenir, Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-align: center
+  color: #000000
+  background-color: #FFFFFF
+</style>
 
+<style lang="sass" scoped>
+.message
+  &-enter
+    &-from
+      opacity: 0
+      transform: translateX(-5vw)
+    &-to
+      opacity: 1
+      transform: translateX(0)
+    &-active
+      transition: all 500ms ease
+
+  &-leave
+    &-to
+      opacity: 0
+      transform: translateX(10vw)
+    &-active
+      transition: all 500ms ease
+</style>
 <style>
 /*全体の設定
 ---------------------------------------------------------------------------*/

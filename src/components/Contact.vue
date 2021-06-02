@@ -1,6 +1,6 @@
 <template>
   <div id="Contact">
-    <h1>Contact</h1>
+    <p>Contact</p>
   </div>
 </template>
 
@@ -12,9 +12,14 @@ export default {
 
 <style>
 #Contact {
-  margin: 200px 0 0 0;
+  /* margin: 200px 0 0 0; */
+  margin: 0;
   width: 100%;
-  height: 500px;
+  height: 2000px;
   background-color: rgb(255, 92, 64);
+}
+#Contact p {
+  font-size: 100px;
+  padding-top: 200px;
 }
 </style>

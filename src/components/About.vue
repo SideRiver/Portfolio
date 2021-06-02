@@ -1,6 +1,6 @@
 <template>
   <div id="About">
-    <h1>About</h1>
+    <p>About</p>
   </div>
 </template>
 
@@ -12,9 +12,14 @@ export default {
 
 <style>
 #About {
-  margin: 200px 0 0 0;
+  /* margin: 200px 0 0 0; */
+  margin: 0;
   width: 100%;
-  height: 500px;
+  height: 2000px;
   background-color: chocolate;
+}
+#About p {
+  font-size: 100px;
+  padding-top: 200px;
 }
 </style>
