@@ -1,15 +1,15 @@
 <template>
-  <transition-group name="message" tag="div">
-    <TopPage v-if="toppage" @click="toppagecheck" />
+  <transition name="message" tag="div">
+    <TopPage v-if="toppage" @dblclick="toppagecheck" />
     <div v-else>
       <MyHeader v-show="header" @check="checkheader" />
-      <Home v-if="home" />
-      <About v-if="about" />
-      <Works v-if="works" />
-      <Books v-if="books" />
-      <Contact v-if="contact" />
+      <Home v-show="home" />
+      <About v-show="about" />
+      <Works v-show="works" />
+      <Books v-show="books" />
+      <Contact v-show="contact" />
     </div>
-  </transition-group>
+  </transition>
 </template>
 
 <script>
@@ -62,10 +62,6 @@ export default {
           this.contact = args[i]
         }
       }
-    },
-    checktop(value) {
-      this.TopPage = value
-      console.log(this.TopPage)
     },
     toppagecheck() {
       this.toppage = false
@@ -212,27 +208,42 @@ table {
 </style>
 
 <style lang="sass" scoped>
+// トランジション関係
 .message
   &-enter
     &-from
       opacity: 0
-      transform: translateX(-5vw)
+      // transform: translateX(-5vw)
     &-to
       opacity: 1
-      transform: translateX(0)
+      // transform: translateX(0)
     &-active
-      transition: all 500ms ease
+      // opacity: 0
+      transition: all 4500ms ease
 
   &-leave
+    &-from
+      opacity: 1
     &-to
       opacity: 0
-      transform: translateX(10vw)
+      // transform: translateX(10vw)
     &-active
-      transition: all 500ms ease
+      transition: all 1000ms ease
 </style>
 <style>
 /*全体の設定
 ---------------------------------------------------------------------------*/
+::selection {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* for Firefox */
+::-moz-selection {
+  background: #000000;
+  color: #ffffff;
+}
+
 body {
   margin: 0px;
   padding: 0px;
@@ -279,6 +290,8 @@ img {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+  /* 追記 */
+  /* pointer-events: none; */
 }
 table {
   border-collapse: collapse;

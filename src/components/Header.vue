@@ -165,6 +165,11 @@ a:hover {
   width: 20%; /*幅。今回は５個なので、100÷5=20。*/
   font-size: 20px; /*文字サイズ*/
   line-height: 105px;
+  /* 選択不可 */
+  user-select: none; /* CSS3 */
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Safari、Chromeなど */
+  -ms-user-select: none; /* IE10かららしい */
 }
 .isfixtop .menubar a {
   height: 64px;

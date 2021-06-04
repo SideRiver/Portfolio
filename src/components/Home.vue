@@ -56,16 +56,17 @@ export default {
 <style>
 .home-wrapper {
   width: 100%;
+  height: 2000px;
   margin: 200px 0 200px 0;
   background: rgb(255, 255, 255);
 }
 .home-wrapper #prof {
   margin: 50px;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
 }
 .home-wrapper h3 {
-  font-size: 24px;
+  font-size: 30px;
   font-family: sans-serif, Helvetica, Arial;
   font-weight: bolder;
   margin: 10px 0px;
@@ -75,7 +76,7 @@ export default {
   font-size: 18px;
   margin: 20px auto;
 }
-.icons {
+/* .icons {
   display: flex;
   width: 50%;
   margin: auto;
@@ -98,21 +99,17 @@ export default {
 }
 .fa-github:hover {
   color: rgb(119, 18, 214);
-  /* transform: scale(1.2); */
 }
 .fa-youtube:hover {
   color: rgb(235, 50, 35);
-  /* transform: scale(1.2); */
 }
 .fa-twitter:hover {
   color: rgb(74, 161, 235);
-  /* transform: scale(1.2); */
 }
 .icons img {
   background-color: black;
   width: 30px;
   height: 30px;
-  /* margin-left: 3px; */
   z-index: 0;
   transition: all 0.3s;
 }
@@ -121,7 +118,6 @@ export default {
   transform: scale(1.4);
 }
 
-/* moreボタン */
 .MoreBox {
   width: 130px;
   height: 65px;
@@ -170,5 +166,5 @@ svg rect {
   -ms-transition: all 0.8s ease-in-out;
   -o-transition: all 0.8s ease-in-out;
   transition: all 0.8s ease-in-out;
-}
+} */
 </style>

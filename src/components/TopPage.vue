@@ -1,12 +1,22 @@
 <template>
   <div class="TopPage">
+    <p class="click abs">DoubleClick</p>
+    <h1 class="abs">SideRiver's Website</h1>
     <div class="gradientCircle abs"></div>
+    <img src="../assets/text.png" alt="" class="abs ixd" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'TopPage',
+  // created() {
+  //   const noScroll = (event) => {
+  //     event.preventDefault()
+  //   }
+  //   document.addEventListener('touchmove', noScroll, { passive: false })
+  //   document.addEventListener('mousewheel', noScroll, { passive: false })
+  // },
 }
 </script>
 
@@ -17,7 +27,49 @@ export default {
   height: 100vh;
 }
 .abs {
-  position: fixed;
+  position: absolute;
+}
+.TopPage .ixd {
+  width: 80vw;
+  height: auto;
+  right: 1vw;
+  bottom: 0;
+  /* 選択不可 */
+  pointer-events: none;
+  user-select: none; /* CSS3 */
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Safari、Chromeなど */
+  -ms-user-select: none; /* IE10かららしい */
+}
+.TopPage h1 {
+  top: 15vh;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  z-index: 10;
+  font-size: 8vw;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 5px;
+  /* 選択不可 */
+  user-select: none; /* CSS3 */
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Safari、Chromeなど */
+  -ms-user-select: none; /* IE10かららしい */
+}
+.click {
+  font-size: 3vh;
+  top: 15px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
+  animation: TextAnimation 3s linear 0s infinite alternate running;
+  /* 選択不可 */
+  user-select: none; /* CSS3 */
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Safari、Chromeなど */
+  -ms-user-select: none; /* IE10かららしい */
 }
 .gradientCircle {
   width: 95vw;
@@ -61,6 +113,18 @@ export default {
   } */
   100% {
     background-position: 100% 50%;
+  }
+}
+
+@keyframes TextAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
   }
 }
 </style>
