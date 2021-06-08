@@ -10,13 +10,6 @@
 <script>
 export default {
   name: 'TopPage',
-  // created() {
-  //   const noScroll = (event) => {
-  //     event.preventDefault()
-  //   }
-  //   document.addEventListener('touchmove', noScroll, { passive: false })
-  //   document.addEventListener('mousewheel', noScroll, { passive: false })
-  // },
 }
 </script>
 

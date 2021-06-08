@@ -1,6 +1,16 @@
 <template>
   <div id="Works">
-    <p>Works<br />Coming Soon...</p>
+    <p class="first">Coming Soon...</p>
+    <p class="second">
+      現在製作中です。以前のサイトを<a
+        href="https://sideriver.studio.site/6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        こちら
+      </a>
+      よりご覧下さい
+    </p>
   </div>
 </template>
 
@@ -15,11 +25,7 @@ export default {
   /* margin: 200px 0 0 0; */
   margin: 0;
   width: 100%;
-  height: 2000px;
-  background-color: khaki;
-}
-#Works p {
-  font-size: 100px;
-  padding-top: 100px;
+  height: 1000px;
+  background-color: rgb(255, 255, 255);
 }
 </style>

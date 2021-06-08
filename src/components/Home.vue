@@ -1,48 +1,60 @@
 <template>
   <div class="home-wrapper">
-    <img src="../assets/profile.png" id="prof" />
-    <h3>SideRiver</h3>
-    <p>
-      Meiji University, School of Interdisciplinary Mathematical Sciences,
-      Department of Frontier Media Science, 3rd year
-    </p>
-    <div class="icons">
-      <a
-        href="https://github.com/SideRiver"
-        target="_blank"
-        rel="noopener noreferrer"
-        ><i class="fab fa-github" aria-hidden="true"></i
-      ></a>
-      <a
-        href="https://twitter.com/SideRiver_works"
-        target="_blank"
-        rel="noopener noreferrer"
-        ><i class="fab fa-twitter" aria-hidden="true"></i
-      ></a>
-      <a
-        href="https://www.youtube.com/channel/UCdbW_0R1vb42aJChM9VmZQA"
-        target="_blank"
-        rel="noopener noreferrer"
-        ><i class="fab fa-youtube" aria-hidden="true"></i
-      ></a>
-      <a
-        href="https://www.wantedly.com/id/takuya_yokokawa"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div><img src="../assets/wantedly_mark_white.png" alt="" /></div
-      ></a>
-    </div>
-    <div class="MoreBox">
-      More→
-      <svg
-        width="130"
-        height="65"
-        viewBox="0 0 130 65"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect x="0" y="0" fill="none" width="130" height="65" />
-      </svg>
+    <h2>News</h2>
+    <section class="card">
+      <img class="card-img" src="../assets/toppage.png" alt="" />
+      <div class="card-content">
+        <h1 class="card-title">ポートフォリオを制作しました</h1>
+        <p class="card-text">
+          未だ未完成ですが公開しました！随時更新していきます
+        </p>
+      </div>
+    </section>
+    <div class="about-wrapper">
+      <img src="../assets/profile.png" id="prof" />
+      <h3>SideRiver</h3>
+      <p>
+        Meiji University, School of Interdisciplinary Mathematical Sciences,
+        Department of Frontier Media Science, 3rd year
+      </p>
+      <div class="icons">
+        <a
+          href="https://github.com/SideRiver"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fab fa-github" aria-hidden="true"></i
+        ></a>
+        <a
+          href="https://twitter.com/wakaran_FMS"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fab fa-twitter" aria-hidden="true"></i
+        ></a>
+        <a
+          href="https://www.youtube.com/channel/UCdbW_0R1vb42aJChM9VmZQA"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fab fa-youtube" aria-hidden="true"></i
+        ></a>
+        <a
+          href="https://www.wantedly.com/id/takuya_yokokawa"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div><img src="../assets/wantedly_mark_white.png" alt="" /></div
+        ></a>
+      </div>
+      <div class="MoreBox">
+        More→
+        <svg
+          width="130"
+          height="65"
+          viewBox="0 0 130 65"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="0" y="0" fill="none" width="130" height="65" />
+        </svg>
+      </div>
     </div>
   </div>
 </template>
@@ -55,13 +67,42 @@ export default {
 
 <style>
 .home-wrapper {
-  width: 100%;
+  width: 90%;
   height: 2000px;
-  margin: 200px 0 200px 0;
+  margin: 100px auto;
   background: rgb(255, 255, 255);
 }
+.home-wrapper h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  text-align: center;
+  padding-top: 150px;
+  margin-bottom: 10px;
+}
+.home-wrapper h2::before,
+.home-wrapper h2::after {
+  content: '';
+  width: 70px;
+  height: 3px;
+  background-color: #75cc75;
+}
+
+.home-wrapper h2::before {
+  margin-right: 20px;
+}
+.home-wrapper h2::after {
+  margin-left: 20px;
+}
+.home-wrapper h3 {
+  font-size: 30px;
+  font-family: sans-serif, Helvetica, Arial;
+  font-weight: bolder;
+  margin: 10px auto;
+}
 .home-wrapper #prof {
-  margin: 50px;
+  margin: 30px 50px 50px 50px;
   width: 250px;
   height: 250px;
 }
@@ -76,95 +117,45 @@ export default {
   font-size: 18px;
   margin: 20px auto;
 }
-/* .icons {
-  display: flex;
-  width: 50%;
-  margin: auto;
-  align-items: center;
-  justify-content: center;
-  align-items: flex-start;
-}
-.icons a {
-  margin: 20px;
-  padding: 5px;
-  text-decoration: none;
-}
-.fab {
-  font-size: 30px;
-  color: black;
-  transition: all 0.3s ease;
-}
-.fab:hover {
-  transform: scale(1.4);
-}
-.fa-github:hover {
-  color: rgb(119, 18, 214);
-}
-.fa-youtube:hover {
-  color: rgb(235, 50, 35);
-}
-.fa-twitter:hover {
-  color: rgb(74, 161, 235);
-}
-.icons img {
-  background-color: black;
-  width: 30px;
-  height: 30px;
-  z-index: 0;
-  transition: all 0.3s;
-}
-.icons img:hover {
-  background-color: #21bddb;
-  transform: scale(1.4);
-}
 
-.MoreBox {
-  width: 130px;
-  height: 65px;
-  margin: 15px auto;
-  color: rgb(0, 0, 0);
-  line-height: 65px;
+/* カード */
+.card {
+  margin: 50px auto;
+  width: 350px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+}
+.card-img {
+  border-radius: 5px 5px 0 0;
+  max-width: 100%;
+  height: auto;
+}
+.card-content {
+  padding: 20px;
+}
+.card-title {
+  font-size: 20px;
+  margin-bottom: 20px;
   text-align: center;
-  position: relative;
-  cursor: pointer;
-  font-family: 'proxima-nova', monospace;
-  font-size: 18px;
-  letter-spacing: 0.07em;
+  color: #333;
 }
-
-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
+.card-text {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
 }
-svg rect {
-  fill: none;
-  stroke: #000000;
-  stroke-width: 1;
+.card-link {
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding: 20px;
 }
-
-.MoreBox:hover svg rect {
-  stroke: #1ec5a9;
+.card-link a {
+  text-decoration: none;
+  color: #0bd;
+  margin: 0 10px;
 }
-
-svg rect {
-  stroke-dasharray: 400, 0;
-  opacity: 0;
-  -webkit-transition: all 0.8s ease-in-out;
-  -moz-transition: all 0.8s ease-in-out;
-  -ms-transition: all 0.8s ease-in-out;
-  -o-transition: all 0.8s ease-in-out;
-  transition: all 0.8s ease-in-out;
+.card-link a:hover {
+  color: #0090aa;
 }
-.MoreBox:hover svg rect {
-  opacity: 1;
-  stroke-width: 7;
-  stroke-dasharray: 35, 245;
-  stroke-dashoffset: 38;
-  -webkit-transition: all 0.8s ease-in-out;
-  -moz-transition: all 0.8s ease-in-out;
-  -ms-transition: all 0.8s ease-in-out;
-  -o-transition: all 0.8s ease-in-out;
-  transition: all 0.8s ease-in-out;
-} */
 </style>

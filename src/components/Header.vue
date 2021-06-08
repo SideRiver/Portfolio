@@ -1,11 +1,13 @@
 <template>
-  <img src="../assets/header.png" alt="" class="slide0" />
-  <img src="../assets/header1.png" alt="" class="slide1" />
-  <img src="../assets/header2.png" alt="" class="slide2" />
-  <img src="../assets/header3.png" alt="" class="slide3" />
-  <div class="header" :class="{ isfixtop: isfix }">
-    <nav class="menubar">
-      <img src="../assets/logo.png" alt="" id="logo" />
+  <div class="header isfixtop">
+    <nav class="menubar fixmenu">
+      <!-- <img
+        src="../assets/logo.png"
+        alt=""
+        id="logo"
+        @click="homeclick"
+        v-if="isfix"
+      /> -->
       <a @click="homeclick" :class="{ selectcolor: home }">
         HOME
         <!-- <span>ホーム</span> -->
@@ -28,13 +30,17 @@
       </a>
     </nav>
   </div>
+  <img src="../assets/header.png" alt="" class="slide0" />
+  <img src="../assets/header1.png" alt="" class="slide1" />
+  <img src="../assets/header2.png" alt="" class="slide2" />
+  <img src="../assets/header3.png" alt="" class="slide3" />
 </template>
 <script>
 export default {
   name: 'Header',
   data() {
     return {
-      isfix: false,
+      isfix: true,
       lastUpdated: Date.now(),
       header: true,
       home: true,
@@ -134,12 +140,12 @@ a:hover {
   color: #42d7eb;
 }
 .header {
-  background: rgb(0, 0, 0, 0.99);
+  background: rgb(0, 0, 0, 0.98);
   width: 100%;
-  height: 105px;
+  /* height: 105px; */
   position: sticky;
   z-index: 1000;
-  transition: all 0.5s;
+  /* transition: all 0.8s; */
 }
 .isfixtop {
   top: 0;
@@ -150,19 +156,28 @@ a:hover {
   height: 3000px;
   background: white;
 }
-
 /*ロゴ画像*/
 .header #logo {
   width: 200px; /*画像幅*/
-  height: auto;
-  display: none;
+  height: 100%;
+  justify-content: flex-start;
+  margin: auto 0;
+}
+.menubar {
+  display: flex;
+  justify-content: space-around;
+  /* justify-content: flex-end; */
+}
+.fixmenu {
+  /* display: flex; */
+  justify-content: space-around;
 }
 .menubar a {
   text-decoration: none;
   display: block;
   height: 105px; /*メニューブロックの高さ。ここの「85」と、下の行の「20」を合計した「105」の数字と、上の「#menubar」の「height」および下のfixmenu設定に２箇所ある「margin-top」の数字を合わせて下さい。*/
-  float: left; /*左に回り込み*/
-  width: 20%; /*幅。今回は５個なので、100÷5=20。*/
+  min-width: 50px;
+  /* padding: 0 16px; */
   font-size: 20px; /*文字サイズ*/
   line-height: 105px;
   /* 選択不可 */
@@ -173,7 +188,7 @@ a:hover {
 }
 .isfixtop .menubar a {
   height: 64px;
-  font-size: 15px; /*文字サイズ*/
+  font-size: 1vw; /*文字サイズ*/
   line-height: 64px;
 }
 /*飾り文字*/

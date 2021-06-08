@@ -1,6 +1,7 @@
 <template>
   <div id="Books">
-    <p>Books<br />Coming Soon...</p>
+    <p class="first">Coming Soon...</p>
+    <p class="second">読んだ本のアーカイブページとなる予定です</p>
   </div>
 </template>
 
@@ -15,11 +16,7 @@ export default {
   /* margin: 200px 0 0 0; */
   margin: 0;
   width: 100%;
-  height: 2000px;
-  background-color: rgb(163, 228, 253);
-}
-#Books p {
-  font-size: 100px;
-  padding-top: 100px;
+  height: 1000px;
+  background-color: rgb(255, 255, 255);
 }
 </style>
